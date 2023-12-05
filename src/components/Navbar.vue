@@ -10,13 +10,13 @@
     </div>
     <div>
       <div v-if="userStore.currentUserId" class="buttons">
-        <button class="button" @click="logout">Log Out</button>
+        <button class="button" id="logout" @click="logout">Log Out</button>
       </div>
       <div v-else class="buttons">
-        <button class="button" @click="modal.showModal('signup')">
+        <button id="signup" class="button" @click="modal.showModal('signup')">
           Sign Up
         </button>
-        <button class="button" @click="modal.showModal('signin')">
+        <button id="signin" class="button" @click="modal.showModal('signin')">
           Sign in
         </button>
       </div>
@@ -39,7 +39,6 @@ const router = useRouter()
 
 async function logout() {
   await userStore.logout()
-  router.push({ name: "Home" })
 }
 </script>
 <style>

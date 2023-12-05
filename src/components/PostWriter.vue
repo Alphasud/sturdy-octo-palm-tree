@@ -10,7 +10,12 @@
 
   <div class="columns">
     <div class="column">
-      <div ref="contentEditable" contenteditable @input="handleInput" />
+      <div
+        id="content"
+        ref="contentEditable"
+        contenteditable
+        @input="handleInput"
+      />
     </div>
     <div class="column">
       <div v-html="html" />
@@ -19,7 +24,11 @@
 
   <div class="columns">
     <div class="column">
-      <button class="button is-primary is-pulled-right" @click="handleClick">
+      <button
+        id="submit"
+        class="button is-primary is-pulled-right"
+        @click="handleClick"
+      >
         Save Post
       </button>
     </div>
@@ -32,8 +41,6 @@ import { onMounted, ref, watch } from "vue"
 import { marked } from "marked"
 import highlightjs from "highlight.js"
 import debounce from "lodash/debounce"
-import { usePostsStore } from "../stores/posts"
-import { useRouter } from "vue-router"
 import { useUsersStore } from "../stores/users"
 
 const props = defineProps<{
@@ -49,9 +56,7 @@ const content = ref(props.post.markdown)
 const contentEditable = ref<HTMLDivElement>()
 const html = ref("")
 
-const postsStore = usePostsStore()
 const userStore = useUsersStore()
-const router = useRouter()
 
 function parseHtml(markdown: string = "") {
   marked.parse(

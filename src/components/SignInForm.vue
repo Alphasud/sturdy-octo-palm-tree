@@ -1,5 +1,5 @@
 <template>
-  <UserForm @submit="handleSignIn" :error="error" />
+  <UserForm id="signin-form" @submit="handleSignIn" :error="error" />
 </template>
 
 <script setup lang="ts">

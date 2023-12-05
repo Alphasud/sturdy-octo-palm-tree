@@ -1,5 +1,5 @@
 <template>
-  <div class="field">
+  <div class="field" :id="name + '-input'">
     <label :for="name" class="label">{{ name }}</label>
     <div class="control">
       <input
